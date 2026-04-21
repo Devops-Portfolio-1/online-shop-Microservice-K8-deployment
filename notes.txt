@@ -1,0 +1,26 @@
+Key Information that Need to understand
+
+What Microservices are we deploying?
+How are they  Connected?
+Any 3rd party services or databases that are using
+Which services are accessible from outside the cluster?
+What are the resource requirements for each service?
+What are the scaling requirements for each service?
+What are the security requirements for each service?
+What are the monitoring and logging requirements for each service?
+
+
+-----------------------------------------------
+Image Names of Each Microservices
+What Environment Variables are required for each microservice?
+Ports that need to be exposed for each microservice?
+If single Developer team is working on all miocroservice we can have a single Namespace for all microservices, but if multiple teams are working on different microservices, it is better to have separate namespaces for each team to avoid conflicts and improve organization.
+
+
+
+Redis can act as a message broker for microservices, enabling them to communicate with each other asynchronously. It can be used to implement a publish-subscribe pattern, where one service publishes messages to a channel and other services subscribe to that channel to receive the messages. This allows for decoupling of services and can improve scalability and performance. Additionally, Redis can be used for caching data, which can further enhance the performance of microservices. 
+
+Also can use as a in memory data store for session management, real-time analytics, and other use cases that require fast access to data. Overall, Redis can be a powerful tool for building and deploying microservices.
+
+
+Load Generator is a tool that simulates user traffic to test the performance and scalability of a system. It can be used to generate a high volume of requests to a microservices architecture, allowing developers to identify bottlenecks and optimize the system for better performance. Load generators can simulate different types of traffic patterns, such as steady-state, bursty, or random traffic, to mimic real-world scenarios. This helps in understanding how the system behaves under various conditions and ensures that it can handle the expected load when deployed in production.
