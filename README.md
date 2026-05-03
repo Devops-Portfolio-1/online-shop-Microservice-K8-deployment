@@ -31,6 +31,7 @@ This project implements a realistic microservices-based online shop system using
 ## Architecture
 
 ![Microservices Architecture Diagram](images/image.png)
+![Microservices Architecture Diagram](images/image-03.png)
 
 ## Services
 
@@ -190,7 +191,7 @@ Services communicate via DNS names within the cluster:
 
 ### Cross-Namespace Access
 
-If services are in different namespaces, use fully qualified domain names:
+If services are in different namespaces, need to use fully qualified domain names:
 
 ```
 <service-name>.<namespace>.svc.cluster.local:<service-port>
@@ -261,6 +262,16 @@ kubectl run -it --rm debug --image=busybox --restart=Never -- nslookup productca
 # Test service accessibility
 kubectl run -it --rm debug --image=curlimages/curl --restart=Never -- curl http://frontend.microservices:80
 ```
+
+### Best Practices 
+
+- **Health Checks:** All services implement readiness and liveness probes to ensure proper pod lifecycle management
+- **Resource Requests and Limits:** Each service specifies CPU and memory requests (100m CPU, 64-220Mi memory) and limits (200m CPU, 128-450Mi memory) for proper resource allocation
+- **Disable Telemetry:** Tracing, profiler, and debugger are disabled in production to reduce overhead and improve performance
+- **Port Configuration:** Services use appropriate port numbers with explicit PORT environment variables (5000, 8080, 3550, 7000, 50051)
+- **Service Discovery:** ClusterIP services enable internal DNS-based service discovery for inter-service communication
+- **Probe Periods:** Health check periods are configured (5 seconds) for quick failure detection
+- **Container Tagging:** All services use specific image versions (v0.2.3) for reproducibility and stability
 
 ### Common Issues
 
